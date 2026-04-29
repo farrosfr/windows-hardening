@@ -1,5 +1,5 @@
 # harden.ps1 - Un-bypassable Windows Hardening
-# Author: Farros (https://github.com/farrosfr)
+# Author: Farros FR (https://github.com/farrosfr)
 
 # 1. Check for Admin Privileges
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {

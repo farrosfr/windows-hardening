@@ -1,6 +1,6 @@
 # NoA Blocker & Windows Hardening Suite
 
-A multi-layer content filtering and system hardening solution designed for high-performance blocking and un-bypassable enforcement. Developed by **Farros** ([farros.co](https://farros.co)).
+A multi-layer content filtering and system hardening solution designed for high-performance blocking and un-bypassable enforcement. Developed by **Farros FR** ([farrosfr.com](https://farrosfr.com)).
 
 ## Project Overview
 
@@ -20,7 +20,7 @@ The PowerShell script applies deep system changes to prevent filtering bypasses 
 Available for both **Chrome** and **Firefox**, these extensions provide real-time content inspection and redirection:
 
 - **Keyword Filtering:** Automatically detects and blocks access to sites based on custom keywords (e.g., piracy, adult content).
-- **Domain Whitelisting:** Easily exclude trusted domains like `farros.co` or `google.com`.
+- **Domain Whitelisting:** Easily exclude trusted domains like `farrosfr.com` or `google.com`.
 - **Dynamic Redirection:** Redirects blocked attempts to a specified educational or neutral URL.
 - **Settings Lock (Firefox):** Features a "Challenge-Response" lock mechanism. To modify settings, the user must manually type a randomized 15-character string, preventing impulsive changes to the filter.
 
@@ -63,9 +63,9 @@ The Firefox extension includes a popup dashboard to:
 
 ## Credits
 
-Developed with 💻 by **Farros**.
+Developed with 💻 by **Farros FR**.
 
-- **Website:** [https://farros.co](https://farros.co)
+- **Website:** [https://farrosfr.com](https://farrosfr.com)
 - **GitHub:** [https://github.com/farrosfr](https://github.com/farrosfr)
 
 ---

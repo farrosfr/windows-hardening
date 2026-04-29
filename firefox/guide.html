@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>NoA Hardening Guide</title>
+    <style>
+        body { font-family: system-ui, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 40px 20px; background: #fafafa; color: #111; }
+        h1 { font-size: 24px; color: #0f172a; border-bottom: 2px solid #e5e5e5; padding-bottom: 10px; }
+        h2 { font-size: 18px; color: #1e293b; margin-top: 30px; }
+        h3 { font-size: 15px; color: #334155; }
+        code { background: #f1f5f9; padding: 2px 4px; border-radius: 4px; font-family: monospace; font-size: 0.9em; color: #475569; }
+        pre { background: #0f172a; color: #f8fafc; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 13px; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #64748b; text-decoration: none; font-size: 14px; }
+        .back-link:hover { color: #0f172a; }
+        .layer { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .strategy { border-left: 4px solid #0f172a; padding-left: 15px; margin: 20px 0; font-style: italic; color: #475569; }
+        .summary-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 8px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <h1>Strategic "Defense-in-Depth"</h1>
+    <p>To achieve the highest level of content filtering and prevent bypasses, the NoA suite employs a multi-layered defense strategy. This guide explains how to maximize your protection.</p>
+
+    <div class="layer">
+        <h2>Layer 1: OS Adapter DNS</h2>
+        <p>The first line of defense is at the Operating System level. By setting DNS servers directly on every network adapter, we ensure every request from the computer is filtered.</p>
+        <h3>Recommended Config:</h3>
+        <pre>$dnsIpv4 = @("208.67.222.123", "208.67.220.123")
+$dnsIpv6 = @("2620:119:35::123", "2620:119:53::123")</pre>
+        <p><strong>Why OpenDNS (Umbrella)?</strong> Cisco's FamilyShield is industry-renowned for its aggressive categorization and zero-config blocking of malicious/adult content.</p>
+    </div>
+
+    <div class="layer">
+        <h2>Layer 2: Browser DoH Lock</h2>
+        <p>Modern browsers often ignore OS DNS by using <strong>DNS over HTTPS (DoH)</strong>. We use Registry Policies to "Lock" the browser to our secure provider.</p>
+        <div class="strategy">
+            "We force the DoH mode to <strong>secure</strong> and point it to OpenDNS, preventing manual bypasses in settings."
+        </div>
+    </div>
+
+    <div class="layer">
+        <h2>Layer 3: SafeSearch Enforcement</h2>
+        <p>DNS blocks domains, but SafeSearch filters <em>results</em>. We modify the <code>hosts</code> file to perform a local hijack of search engine domains.</p>
+        <pre>216.239.38.120 www.google.com
+216.239.38.120 google.com
+204.79.197.220 www.bing.com</pre>
+    </div>
+
+    <div class="summary-box">
+        <h2>Summary: Why This Works</h2>
+        <p>Combining these layers creates a <strong>Maximum Guard</strong> environment:</p>
+        <ul>
+            <li><strong>DNS</strong> blocks the "Roads" (Domains).</li>
+            <li><strong>Policies</strong> lock the "Cars" (Browsers) to those roads.</li>
+            <li><strong>Hosts File</strong> ensures "Windows" (Search Results) stay clean.</li>
+        </ul>
+    </div>
+
+    <p style="text-align:center; font-size:12px; color:#94a3b8; margin-top:40px;">
+        Refer to <code>harden.ps1</code> in the root folder to apply these changes.
+    </p>
+</body>
+</html>

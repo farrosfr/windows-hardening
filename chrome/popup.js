@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const unlockArea = document.getElementById('unlockArea');
     const challengeStrEl = document.getElementById('challengeStr');
     const unlockInput = document.getElementById('unlockInput');
+    const guideBtn = document.getElementById('guideBtn');
 
     let isLocked = false;
     let currentChallenge = '';
@@ -48,10 +49,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Open Guide
+    guideBtn.addEventListener('click', () => {
+        chrome.tabs.create({ url: 'guide.html' });
+    });
+
     // Initialize: Load all settings including the lock state
     chrome.storage.local.get(['blockedKeywords', 'excludedDomains', 'redirectUrl', 'isLocked'], (data) => {
         keywordsInput.value = data.blockedKeywords || 'lk21, indoxxi, film semi, dramacool, vivamax, pinoy cinema';
-        domainsInput.value = data.excludedDomains || 'farros.co, google.com, medium.com';
+        domainsInput.value = data.excludedDomains || 'farrosfr.com, google.com, medium.com';
         redirectInput.value = data.redirectUrl || 'https://www.youtube.com/watch?v=fbTlW1V2VuI';
         isLocked = data.isLocked || false;
         updateUI();
