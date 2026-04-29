@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "NoA Blocker",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Dynamic content filtering and redirection tool.",
   "permissions": ["storage"],
   "icons": {
@@ -16,7 +16,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "noablocker@farrosfr.com",
+      "id": "noablocker@farros.co",
       "strict_min_version": "142.0",
       "data_collection_permissions": {
         "required": ["none"]
