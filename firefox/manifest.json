@@ -4,6 +4,11 @@
   "version": "1.0",
   "description": "Dynamic content filtering and redirection tool.",
   "permissions": ["storage"],
+  "icons": {
+    "16": "icon.svg",
+    "48": "icon.svg",
+    "128": "icon.svg"
+  },
   "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "popup.html",

@@ -6,7 +6,7 @@ A multi-layer content filtering and system hardening solution designed for high-
 
 This suite provides a "defense-in-depth" approach to content filtering, tackling the problem at both the Operating System and Browser levels.
 
-### 1. OS-Level Hardening (`harden.ps1`)
+### 1. OS-Level Hardening ([harden.ps1](https://github.com/farrosfr/noa/blob/main/harden.ps1))
 
 The PowerShell script applies deep system changes to prevent filtering bypasses at the network level:
 
@@ -66,7 +66,7 @@ The Firefox extension includes a popup dashboard to:
 Developed with 💻 by **Farros FR**.
 
 - **Website:** [https://farrosfr.com](https://farrosfr.com)
-- **GitHub:** [https://github.com/farrosfr](https://github.com/farrosfr)
+- **GitHub:** [https://github.com/farrosfr/noa](https://github.com/farrosfr/noa)
 
 ---
 *Disclaimer: Use this tool responsibly. It is designed for red team operators and system administrators to enforce corporate or personal content policies.*

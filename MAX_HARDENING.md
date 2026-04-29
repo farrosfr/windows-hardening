@@ -1,6 +1,6 @@
 # Maximum Hardening Guide: Strategic "Defense-in-Depth"
 
-To achieve the highest level of content filtering and prevent bypasses, the NoA suite employs a **multi-layered defense strategy**. This guide explains the logic behind the core layers of the `harden.ps1` script and how they work together to create a robust, un-bypassable environment.
+To achieve the highest level of content filtering and prevent bypasses, the NoA suite employs a **multi-layered defense strategy**. This guide explains the logic behind the core layers of the [harden.ps1](https://github.com/farrosfr/noa/blob/main/harden.ps1) script and how they work together to create a robust, un-bypassable environment.
 
 ---
 
@@ -55,22 +55,36 @@ We modify the Windows `hosts` file to perform a "Local Hijack" of search engine 
 ```
 
 - **How it works:** `216.239.38.120` is a special IP address provided by Google (forcesafesearch.google.com). When you point `google.com` to this IP, Google’s servers automatically treat the request as "SafeSearch ON" regardless of the user's account settings.
-- **Scope:** This script applies similar logic to **Bing**, **DuckDuckGo**, and **YouTube**, ensuring that even if a site isn't blocked, the search results remain clean.
 
 ---
 
-## 4. Summary: Why This Works
+## 4. Network Layer: Outbound Firewall Rules
+
+The final layer prevents bypasses that use direct IP connections or known proxy/VPN ranges that might not rely on DNS.
+
+### The Mechanism
+
+We use **Windows Firewall** to block outbound connections to a curated list of IPs known for providing filter-evasion services.
+
+- **Scope:** This blocks "backdoor" routes that some bypass tools use to tunnel traffic around the DNS and browser-level filters.
+- **Reliability:** By blocking at the OS firewall level, we ensure that even if an application ignores DNS and Registry settings, it still cannot reach its destination.
+
+---
+
+## 5. Summary: Why This Works
 
 If you only use one layer, you are vulnerable:
 
 1. **Only OS DNS?** The user can enable DoH in Chrome and bypass it.
 2. **Only Browser Extension?** The user can use an Incognito window or a different browser.
 3. **Only SafeSearch?** The user can still visit blocked domains directly via their URLs.
+4. **Only Firewall?** The firewall cannot block every single domain; it only catches known "backdoors".
 
-**The NoA approach** combines all three:
+**The NoA approach** combines all four:
 
 - **DNS** blocks the "Roads" (Domains).
 - **Registry Policies** lock the "Cars" (Browsers) to those roads.
 - **Hosts File** ensures that even if you look out the window (Search Results), you only see what is safe.
+- **Firewall** blocks "Off-road Bypasses" (Direct IP connections).
 
 This creates a "Maximum Guard" environment where bypassing the filter requires significant technical effort and administrative access.

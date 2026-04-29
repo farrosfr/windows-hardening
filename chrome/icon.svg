@@ -1,0 +1,21 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer Shield -->
+  <path d="M64 10L112 30V65C112 90 95 112 64 118C33 112 16 90 16 65V30L64 10Z" fill="#0A0A0A" stroke="#FF0000" stroke-width="4"/>
+  
+  <!-- Digital "Code" Pattern Background -->
+  <rect x="35" y="45" width="40" height="2" fill="#FF0000" fill-opacity="0.3"/>
+  <rect x="35" y="52" width="58" height="2" fill="#FF0000" fill-opacity="0.2"/>
+  <rect x="35" y="59" width="30" height="2" fill="#FF0000" fill-opacity="0.5"/>
+  <rect x="35" y="66" width="50" height="2" fill="#FF0000" fill-opacity="0.1"/>
+  <rect x="35" y="73" width="20" height="2" fill="#FF0000" fill-opacity="0.4"/>
+  
+  <!-- "No" / Block Symbol -->
+  <circle cx="64" cy="64" r="28" stroke="#FF0000" stroke-width="3" stroke-dasharray="4 2"/>
+  <line x1="44" y1="84" x2="84" y2="44" stroke="#FF0000" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Scanning Line (Red Teaming Aesthetic) -->
+  <rect x="18" y="50" width="92" height="1" fill="#FF0000">
+    <animate attributeName="y" values="30;100;30" dur="3s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" />
+  </rect>
+</svg>

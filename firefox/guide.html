@@ -15,6 +15,10 @@
         .layer { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
         .strategy { border-left: 4px solid #0f172a; padding-left: 15px; margin: 20px 0; font-style: italic; color: #475569; }
         .summary-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 8px; margin-top: 40px; }
+        .warning-box { background: #fff7ed; border: 1px solid #fed7aa; padding: 15px; border-radius: 8px; margin-top: 20px; color: #9a3412; font-size: 14px; }
+        footer { text-align: center; margin-top: 40px; font-size: 12px; color: #94a3b8; }
+        footer a { color: #64748b; text-decoration: none; border-bottom: 1px solid #e2e8f0; }
+        footer a:hover { color: #0f172a; border-bottom-color: #0f172a; }
     </style>
 </head>
 <body>
@@ -46,6 +50,14 @@ $dnsIpv6 = @("2620:119:35::123", "2620:119:53::123")</pre>
 204.79.197.220 www.bing.com</pre>
     </div>
 
+    <div class="layer">
+        <h2>Layer 4: Network Firewall</h2>
+        <p>To prevent bypasses via direct IP connections or known proxy ranges, we implement outbound firewall rules that block traffic to high-risk bypass IPs.</p>
+        <div class="strategy">
+            "We shut down the backdoors by blocking outbound connections to known filter-evasion ranges."
+        </div>
+    </div>
+
     <div class="summary-box">
         <h2>Summary: Why This Works</h2>
         <p>Combining these layers creates a <strong>Maximum Guard</strong> environment:</p>
@@ -53,11 +65,17 @@ $dnsIpv6 = @("2620:119:35::123", "2620:119:53::123")</pre>
             <li><strong>DNS</strong> blocks the "Roads" (Domains).</li>
             <li><strong>Policies</strong> lock the "Cars" (Browsers) to those roads.</li>
             <li><strong>Hosts File</strong> ensures "Windows" (Search Results) stay clean.</li>
+            <li><strong>Firewall</strong> blocks "Off-road Bypasses" (Direct IP connections).</li>
         </ul>
     </div>
 
-    <p style="text-align:center; font-size:12px; color:#94a3b8; margin-top:40px;">
-        Refer to <code>harden.ps1</code> in the root folder to apply these changes.
-    </p>
+    <div class="warning-box">
+        <strong>Warning:</strong> Automated hardening via <code>harden.ps1</code> modifies system-wide settings. Ensure you have administrative privileges and understand that these changes are designed to be difficult to reverse for maximum protection.
+    </div>
+
+    <footer>
+        <p>Refer to <a href="https://github.com/farrosfr/noa/blob/main/harden.ps1">harden.ps1</a> to apply these changes.</p>
+        <p>&copy; 2026 Farros FR. All rights reserved.</p>
+    </footer>
 </body>
 </html>
